@@ -168,7 +168,7 @@ class ResumableShardDownloader(ShardDownloader):
                 yield await task
             # TODO: except Exception
             except Exception as e:
-                logger.error("Error downloading shard:", e)
+                logger.opt(exception=e).error("Error downloading shard")
 
     async def get_shard_download_status_for_shard(
         self, shard: ShardMetadata
